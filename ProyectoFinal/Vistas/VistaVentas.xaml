@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="ProyectoFinal.Vistas.VistaVentas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoFinal.Vistas"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="650" Background="White" BorderBrush="Aqua" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Ventas" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+
+                <WrapPanel HorizontalAlignment="Center" Margin="0 15 0 15">
+                    
+                        <StackPanel Orientation="Horizontal" Margin="15" >
+                            <TextBox x:Name="boxEmpresa" Width="150" Height="30" ToolTip="Empresa Compradora" materialDesign:HintAssist.Hint="Empresa Compradora*" MaxLength="25" PreviewTextInput="boxEmpresa_PreviewTextInput"/>
+                            <TextBox x:Name="boxCodigo" Margin="10 0 10 0" Width="150" Height="30" ToolTip="Codigo de Propietario" materialDesign:HintAssist.Hint="Codigo Contenedor*" MaxLength="4" materialDesign:HintAssist.HelperText="000A*" PreviewKeyDown="boxCodigo_PreviewKeyDown"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal"  Margin="10">
+                            <TextBox x:Name="boxPrecioVenta" Width="150" Height="30" ToolTip="PrecioCompra" materialDesign:HintAssist.Hint="Precio de Compra*" PreviewTextInput="boxPrecioVenta_PreviewTextInput" PreviewKeyDown="boxPrecioVenta_PreviewKeyDown"/>
+                            <Button x:Name="btnRealizarCompra" Width="150" Height="50" Content="Realizar Venta" Margin="5 0 0 0" HorizontalAlignment="Center" Click="btnRealizarCompra_Click"/>
+                        </StackPanel>                        
+                    
+
+                </WrapPanel>
+
+            </StackPanel>
+
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <DataGrid x:Name="TablaVentas" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="ProyectoFinal.Vistas.VistaCompras"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProyectoFinal.Vistas"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="650" Background="White" BorderBrush="Aqua" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Compras" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+
+                <WrapPanel HorizontalAlignment="Center" Margin="0 20 0 20">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <StackPanel Orientation="Vertical" Margin="10" >
+                                <TextBox x:Name="boxEmpresa" Width="150" Height="30" ToolTip="Empresa Proveedora" materialDesign:HintAssist.Hint="Empresa Proveedora*" MaxLength="25" PreviewTextInput="boxEmpresa_PreviewTextInput"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10">
+                            <TextBox x:Name="boxCodigo" Width="150" Height="30" ToolTip="Codigo de Propietario" materialDesign:HintAssist.Hint="Codigo Contenedor*" MaxLength="4" materialDesign:HintAssist.HelperText="000A*" PreviewKeyDown="boxCodigo_PreviewKeyDown"/>
+                        </StackPanel>
+                            <StackPanel Orientation="Vertical"  Margin="10">
+                                <TextBox x:Name="boxPrecioCompra" Width="150" Height="30" ToolTip="PrecioCompra" materialDesign:HintAssist.Hint="Precio de Compra*" PreviewTextInput="boxPrecioCompra_PreviewTextInput" PreviewKeyDown="boxPrecioCompra_PreviewKeyDown"/>
+                            </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <ComboBox Width="170" Height="30" x:Name="ComboTipos">
+                                    <ComboBoxItem Content="Tipo De Contenedor" IsSelected="True"/>
+                                    <ComboBoxItem Content="DryContainer" IsSelected="False"/>
+                                    <ComboBoxItem Content="FlatRack" IsSelected="False"/>
+                                    <ComboBoxItem Content="OpenTop" IsSelected="False"/>
+                                    <ComboBoxItem Content="Reefer" IsSelected="False"/>
+                            </ComboBox>
+                            </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <ComboBox Width="170" Height="30" x:Name="ComboSizeContenedor">
+                                    <ComboBoxItem Content="Tamaño de Contenedor" IsSelected="True"/>
+                                    <ComboBoxItem Content="20 FT" IsSelected="False"/>
+                                    <ComboBoxItem Content="40 FT" IsSelected="False"/>
+                                </ComboBox>
+                            </StackPanel>
+                        <Button x:Name="btnRealizarCompra" Width="150" Height="50" Content="Realizar Compra" Margin="5 0 0 0" HorizontalAlignment="Center" Click="btnRealizarCompra_Click"/>
+                    </StackPanel>
+                </WrapPanel>
+                                
+            </StackPanel>
+
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <DataGrid x:Name="TablaCompras" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" IsReadOnly="True"/>
+        </Grid>
+    </Grid>
+</UserControl>
